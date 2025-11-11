@@ -1,16 +1,21 @@
-async function atualizar() {
-  let res = await fetch('/api/historico');
-  let dados = await res.json();
+const api='/dados';
+let chartCtx=document.getElementById('chart').getContext('2d');
 
-  if (dados.length === 0) return;
+let chart=new Chart(chartCtx,{type:'line',data:{labels:[],datasets:[{label:'Potencia',data:[],borderColor:'#d7263d'}]}});
 
-  let ultimo = dados[dados.length - 1];
+async function loadData(){
+  let r=await fetch(api);
+  let d=await r.json();
+  document.getElementById('v').innerText=d.voltage.toFixed(2);
+  document.getElementById('i').innerText=d.current.toFixed(2);
+  document.getElementById('p').innerText=d.power.toFixed(2);
+  document.getElementById('e').innerText=d.energy.toFixed(2);
+  document.getElementById('c').innerText=d.cost.toFixed(2);
+  document.getElementById('anom').innerText=d.anomaly;
 
-  document.getElementById('v').textContent = ultimo.voltage;
-  document.getElementById('i').textContent = ultimo.current;
-  document.getElementById('p').textContent = ultimo.power;
-  document.getElementById('e').textContent = ultimo.energy;
-  document.getElementById('c').textContent = ultimo.cost;
+  chart.data.labels.push('');
+  chart.data.datasets[0].data.push(d.power);
+  if(chart.data.labels.length>50){chart.data.labels.shift();chart.data.datasets[0].data.shift();}
+  chart.update();
 }
-
-setInterval(atualizar, 1000);
+setInterval(loadData,2000);
