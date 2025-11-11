@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Medidor de Energia PI IV Autoita</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<header>
+<h1>Medidor de Energia PI IV Autoita</h1>
+</header>
+
+<section class="cards">
+<div class="card">Tensão: <span id="volt"></span></div>
+<div class="card">Corrente: <span id="corr"></span></div>
+<div class="card">Potência: <span id="pot"></span></div>
+<div class="card">Energia: <span id="ener"></span></div>
+<div class="card">Custo: <span id="custo"></span></div>
+<div class="card">Anomalia: <span id="anom"></span></div>
+</section>
+
+<h2>Previsão de Consumo</h2>
+<p id="prev"></p>
+
+<div class="chart-container"><canvas id="graficoTensao"></canvas></div>
+<div class="chart-container"><canvas id="graficoCorrente"></canvas></div>
+<div class="chart-container"><canvas id="graficoPotencia"></canvas></div>
+<div class="chart-container"><canvas id="graficoEnergia"></canvas></div>
+<div class="chart-container"><canvas id="graficoCusto"></canvas></div>
+
+<script src="script.js"></script>
+</body>
+</html>
