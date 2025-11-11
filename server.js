@@ -1,29 +1,25 @@
+
 const express = require('express');
 const fs = require('fs');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-
+const path = require('path');
 const app = express();
-app.use(cors());
-app.use(bodyParser.json());
-app.use(express.static('public'));
 
-let dbFile = './dados.json';
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.post('/api/energia', (req, res) => {
-  const dado = req.body;
-  console.log('Recebido:', dado);
+const dataPath = path.join(__dirname, 'data.json');
 
-  let historico = JSON.parse(fs.readFileSync(dbFile));
-  historico.push(dado);
-  fs.writeFileSync(dbFile, JSON.stringify(historico, null, 2));
-
-  res.json({ status: 'ok' });
+app.post('/dados', (req, res) => {
+  let current = [];
+  if (fs.existsSync(dataPath)) current = JSON.parse(fs.readFileSync(dataPath));
+  current.push({ ...req.body, timestamp: Date.now() });
+  fs.writeFileSync(dataPath, JSON.stringify(current, null, 2));
+  res.json({ ok: true });
 });
 
-app.get('/api/historico', (req, res) => {
-  const historico = JSON.parse(fs.readFileSync(dbFile));
-  res.json(historico);
+app.get('/historico', (req, res) => {
+  if (!fs.existsSync(dataPath)) return res.json([]);
+  res.json(JSON.parse(fs.readFileSync(dataPath)));
 });
 
-app.listen(3000, () => console.log('Servidor rodando em http://localhost:3000'));
+app.listen(3000, () => console.log("Servidor rodando na porta 3000"));
