@@ -1,32 +1,32 @@
 
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html>
 <head>
+<<<<<<< HEAD
 <meta charset="UTF-8">
 <<<<<<< HEAD
 <title>Medidor de Energia PI IV Autoita</title>
 <link rel="stylesheet" href="style.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+=======
+  <meta charset="UTF-8">
+  <title>Smart Energy Monitor</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+>>>>>>> parent of 71e33e4 (Teste 2.0)
 </head>
 <body>
-<header>
-  <h1>Medidor de Energia PI IV Autoita</h1>
-</header>
-<main>
-  <section class="grid">
-    <div class="card">
-      <canvas id="graficoCorrente"></canvas>
-    </div>
-    <div class="card">
-      <canvas id="graficoTensao"></canvas>
-    </div>
-    <div class="card">
-      <canvas id="graficoPotencia"></canvas>
-    </div>
-    <div class="card">
-      <canvas id="graficoPrevisao"></canvas>
-    </div>
+  <nav>Smart Energy Monitor</nav>
+
+  <section class="cards">
+    <div class="card"><h3>Tensao</h3><p id="v">0</p></div>
+    <div class="card"><h3>Corrente</h3><p id="i">0</p></div>
+    <div class="card"><h3>Potencia</h3><p id="p">0</p></div>
+    <div class="card"><h3>Energia (Wh)</h3><p id="e">0</p></div>
+    <div class="card"><h3>Custo (R$)</h3><p id="c">0</p></div>
+    <div class="card"><h3>Anomalia</h3><p id="anom">Normal</p></div>
   </section>
+<<<<<<< HEAD
 </main>
 <script src="script.js"></script>
 =======
@@ -137,5 +137,11 @@ setInterval(carregar, 4000);
 </script>
 
 >>>>>>> parent of d594f64 (Teste Machine)
+=======
+
+  <canvas id="chart" width="400" height="150"></canvas>
+
+  <script src="script.js"></script>
+>>>>>>> parent of 71e33e4 (Teste 2.0)
 </body>
 </html>
