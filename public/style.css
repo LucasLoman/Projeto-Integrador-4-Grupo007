@@ -1,5 +1,0 @@
-body { background:#111; color:#eee; font-family:Arial; margin:0; padding:20px; }
-h1 { font-size:32px; text-align:center; color:#ff4d4d; }
-.card { background:#1a1a1a; padding:10px; border-radius:8px; margin:5px; }
-.cards { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
-.chart-container { width:90%; height:300px; margin:20px auto; }
