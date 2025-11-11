@@ -1,7 +1,5 @@
-body {
-  margin:0; padding:0; background:#0e0e0f; color:#eee; font-family:'Poppins', sans-serif;
-}
-header { text-align:center; padding:20px; font-size:28px; font-weight:600; }
-.grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; padding:20px; }
-.card { background:#1b1b1d; padding:20px; border-radius:14px; box-shadow:0 0 10px #0005; }
-canvas { width:100% !important; height:300px !important; }
+body { background:#111; color:#eee; font-family:Arial; margin:0; padding:20px; }
+h1 { font-size:32px; text-align:center; color:#ff4d4d; }
+.card { background:#1a1a1a; padding:10px; border-radius:8px; margin:5px; }
+.cards { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+.chart-container { width:90%; height:300px; margin:20px auto; }

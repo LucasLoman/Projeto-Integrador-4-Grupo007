@@ -8,24 +8,27 @@
 </head>
 <body>
 <header>
-  <h1>Medidor de Energia PI IV Autoita</h1>
+<h1>Medidor de Energia PI IV Autoita</h1>
 </header>
-<main>
-  <section class="grid">
-    <div class="card">
-      <canvas id="graficoCorrente"></canvas>
-    </div>
-    <div class="card">
-      <canvas id="graficoTensao"></canvas>
-    </div>
-    <div class="card">
-      <canvas id="graficoPotencia"></canvas>
-    </div>
-    <div class="card">
-      <canvas id="graficoPrevisao"></canvas>
-    </div>
-  </section>
-</main>
+
+<section class="cards">
+<div class="card">Tensão: <span id="volt"></span></div>
+<div class="card">Corrente: <span id="corr"></span></div>
+<div class="card">Potência: <span id="pot"></span></div>
+<div class="card">Energia: <span id="ener"></span></div>
+<div class="card">Custo: <span id="custo"></span></div>
+<div class="card">Anomalia: <span id="anom"></span></div>
+</section>
+
+<h2>Previsão de Consumo</h2>
+<p id="prev"></p>
+
+<div class="chart-container"><canvas id="graficoTensao"></canvas></div>
+<div class="chart-container"><canvas id="graficoCorrente"></canvas></div>
+<div class="chart-container"><canvas id="graficoPotencia"></canvas></div>
+<div class="chart-container"><canvas id="graficoEnergia"></canvas></div>
+<div class="chart-container"><canvas id="graficoCusto"></canvas></div>
+
 <script src="script.js"></script>
 </body>
 </html>
