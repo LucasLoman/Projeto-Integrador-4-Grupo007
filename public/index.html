@@ -1,1 +1,21 @@
-<!DOCTYPE html><html><head><meta charset='UTF-8'><title>Medidor de Energia AutoIta</title><link rel='stylesheet' href='style.css'><script src='https://cdn.jsdelivr.net/npm/chart.js'></script></head><body><h1 class='title'>Medidor de Energia AutoIta</h1><div class='card'><h2>Consumo (Wh)</h2><canvas id='whChart'></canvas></div><div class='card'><h2>Status de Consumo</h2><p id='anomaliaText'>Carregando...</p></div><script src='script.js'></script></body></html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Energia</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Dashboard de Energia</h1>
+
+  <div class="box">
+    <p><strong>Tensão (V):</strong> <span id="v"></span></p>
+    <p><strong>Corrente (A):</strong> <span id="i"></span></p>
+    <p><strong>Potência (W):</strong> <span id="p"></span></p>
+    <p><strong>Energia (Wh):</strong> <span id="e"></span></p>
+    <p><strong>Custo (R$):</strong> <span id="c"></span></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

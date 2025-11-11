@@ -1,32 +1,29 @@
-const express=require('express');
-const app=express();
-const cors=require('cors');
+const express = require('express');
+const fs = require('fs');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+
+const app = express();
 app.use(cors());
-app.use(express.json());
+app.use(bodyParser.json());
 app.use(express.static('public'));
 
-let lastData={};
-const history=[];
+let dbFile = './dados.json';
 
-// ML: médio (detecção de anomalias simples)
-function detectAnomaly(p){
-  let values=history.slice(-20).map(x=>x.power);
-  if(values.length<5) return "Normal";
-  let avg=values.reduce((a,b)=>a+b,0)/values.length;
-  if(p>avg*1.4) return "Alerta";
-  return "Normal";
-}
+app.post('/api/energia', (req, res) => {
+  const dado = req.body;
+  console.log('Recebido:', dado);
 
-app.post('/dados',(req,res)=>{
-  let d=req.body;
-  d.anomaly=detectAnomaly(d.power);
-  lastData=d;
-  history.push(d);
-  if(history.length>500) history.shift();
-  res.json({status:"ok"});
+  let historico = JSON.parse(fs.readFileSync(dbFile));
+  historico.push(dado);
+  fs.writeFileSync(dbFile, JSON.stringify(historico, null, 2));
+
+  res.json({ status: 'ok' });
 });
 
-app.get('/dados',(req,res)=>res.json(lastData));
-app.get('/historico',(req,res)=>res.json(history));
+app.get('/api/historico', (req, res) => {
+  const historico = JSON.parse(fs.readFileSync(dbFile));
+  res.json(historico);
+});
 
-app.listen(3000,()=>console.log("Rodando na porta 3000"));
+app.listen(3000, () => console.log('Servidor rodando em http://localhost:3000'));

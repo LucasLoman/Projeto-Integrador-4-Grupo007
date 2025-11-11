@@ -1,1 +1,16 @@
-async function fetchHistorico(){const r=await fetch('/historico');const d=await r.json();const l=d.map((_,i)=>i+1);const w=d.map(x=>x.energy);new Chart(document.getElementById('whChart').getContext('2d'),{type:'line',data:{labels:l,datasets:[{label:'Energia (Wh)',data:w,borderWidth:2}]}});const last=d[d.length-1].power;let st='Baixo consumo';if(last>3000)st='Alto consumo';else if(last>1500)st='Médio consumo';document.getElementById('anomaliaText').innerText=st;}fetchHistorico();
+async function atualizar() {
+  let res = await fetch('/api/historico');
+  let dados = await res.json();
+
+  if (dados.length === 0) return;
+
+  let ultimo = dados[dados.length - 1];
+
+  document.getElementById('v').textContent = ultimo.voltage;
+  document.getElementById('i').textContent = ultimo.current;
+  document.getElementById('p').textContent = ultimo.power;
+  document.getElementById('e').textContent = ultimo.energy;
+  document.getElementById('c').textContent = ultimo.cost;
+}
+
+setInterval(atualizar, 1000);
