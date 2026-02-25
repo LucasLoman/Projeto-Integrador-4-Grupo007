@@ -42,6 +42,7 @@ P = V × I
 Energia:
 
 E = Σ (P × Δt_horas)
+
 🌐 Simulação no Wokwi
 
 O projeto pode ser simulado online pelo Wokwi no link:
@@ -50,16 +51,6 @@ O projeto pode ser simulado online pelo Wokwi no link:
 
 Basta abrir o link e clicar em Start Simulation para visualizar o funcionamento do ESP32 enviando dados.
 O Site que recebe os dados: https://projeto-integrador-4-grupo007.onrender.com/
-
-🖥️ Estrutura do Projeto
-/backend
-    main.py
-    requirements.txt
-
-/frontend
-    index.html
-    style.css
-    script.js
 
 📈 Dashboard
 
